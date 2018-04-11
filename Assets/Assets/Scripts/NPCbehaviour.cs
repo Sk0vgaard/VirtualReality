@@ -7,7 +7,7 @@ public class NPCbehaviour : MonoBehaviour {
 
     public Transform target;
 
-    [Range(1, 3)]
+    [Range(0, 3)]
     public float speed;
 
     public float distToTarget;
