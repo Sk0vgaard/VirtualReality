@@ -9,6 +9,7 @@ public class NPCbehaviour : MonoBehaviour {
 
     [Range(0, 3)]
     public float speed;
+    public int HitPoints;
 
     public float distToTarget;
 
@@ -38,5 +39,17 @@ public class NPCbehaviour : MonoBehaviour {
             agent.isStopped = true;
         }
         animator.SetFloat("Forward", agent.velocity.magnitude);
+
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+        {
+            // TODO: Damage when attacked
+            HitPoints = HitPoints--;
+        }
+
+        if (HitPoints == 0)
+        {
+            Debug.Log("YESSSS", gameObject);
+            // TODO: Go back to start menu.
+        }
     }
 }
