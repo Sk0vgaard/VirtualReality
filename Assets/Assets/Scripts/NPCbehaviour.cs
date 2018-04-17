@@ -50,13 +50,15 @@ public class NPCbehaviour : MonoBehaviour {
 
     void life()
     {
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("attack") && LifePoints != 0)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack") && LifePoints != 0)
         {
             // TODO: Damage when attacked
-            LifePoints--;
-            Debug.Log("Attacked", gameObject);
-            Debug.Log("" + LifePoints, gameObject);
-
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                LifePoints--;
+                Debug.Log("Attacked", gameObject);
+                Debug.Log("" + LifePoints, gameObject);
+            }
         }
 
         if (LifePoints == 0)

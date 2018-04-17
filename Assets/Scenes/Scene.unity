@@ -23692,7 +23692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 726508209}
   speed: 1.38
-  LifePoints: 3
+  LifePoints: 2000
   distToTarget: 0
 --- !u!136 &1197837465
 CapsuleCollider:
