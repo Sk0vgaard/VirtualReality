@@ -22914,6 +22914,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1745142050597064, guid: 171a55fa19ed32144a10a42bcc8f9a58, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 171a55fa19ed32144a10a42bcc8f9a58, type: 2}
   m_IsPrefabParent: 0
@@ -23688,7 +23692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 726508209}
   speed: 1.38
-  HitPoints: 3
+  LifePoints: 3
   distToTarget: 0
 --- !u!136 &1197837465
 CapsuleCollider:

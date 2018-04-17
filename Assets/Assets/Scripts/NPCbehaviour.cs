@@ -9,7 +9,7 @@ public class NPCbehaviour : MonoBehaviour {
 
     [Range(0, 3)]
     public float speed;
-    public int HitPoints;
+    public int LifePoints;
 
     public float distToTarget;
 
@@ -22,6 +22,11 @@ public class NPCbehaviour : MonoBehaviour {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+    }
+
+    private void FixedUpdate()
+    {
+        life();
     }
 
     // Update is called once per frame
@@ -38,17 +43,26 @@ public class NPCbehaviour : MonoBehaviour {
         {
             agent.isStopped = true;
         }
-        animator.SetFloat("Forward", agent.velocity.magnitude);
+            animator.SetFloat("Forward", agent.velocity.magnitude);
+            animator.SetInteger("Stop", LifePoints);
+    }
 
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
+
+    void life()
+    {
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("attack") && LifePoints != 0)
         {
             // TODO: Damage when attacked
-            HitPoints = HitPoints--;
+            LifePoints--;
+            Debug.Log("Attacked", gameObject);
+            Debug.Log("" + LifePoints, gameObject);
+
         }
 
-        if (HitPoints == 0)
+        if (LifePoints == 0)
         {
-            Debug.Log("YESSSS", gameObject);
+            // TODO: death()
+            agent.speed = 0;
             // TODO: Go back to start menu.
         }
     }
