@@ -7,6 +7,7 @@ public class Gui : MonoBehaviour {
 
     private float timerValue;
     public Text timer;
+    public int SURVIVE_FOR;
 
     private void Start()
     {
@@ -15,12 +16,14 @@ public class Gui : MonoBehaviour {
 
     void Update()
     {
- 
         timerValue += Time.deltaTime;
-        timer.text = "survive: " + Mathf.RoundToInt(timerValue);
-        if (Mathf.RoundToInt(timerValue) == 20)
+        timer.text = "Survive: " + Mathf.RoundToInt(timerValue);
+
+        if (Mathf.RoundToInt(timerValue) == SURVIVE_FOR)
         {
+            timer.text = "You have won!";
             Debug.Log("Victory");
+            Time.timeScale = 0.0f;
         }
     }
 }
