@@ -15,7 +15,12 @@ public class Gui : MonoBehaviour {
 
     void Update()
     {
+ 
         timerValue += Time.deltaTime;
-        timer.text = "survive: " + timerValue;
+        timer.text = "survive: " + Mathf.RoundToInt(timerValue);
+        if (Mathf.RoundToInt(timerValue) == 20)
+        {
+            Debug.Log("Victory");
+        }
     }
 }
