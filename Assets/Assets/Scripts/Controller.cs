@@ -58,11 +58,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jumping = false;
                 m_AudioSource = GetComponent<AudioSource>();
                 m_MouseLook.Init(transform, m_Camera.transform);
+
+                SceneManager.LoadScene(0);
             }
 
+       
 
-            // Update is called once per frame
-            private void Update()
+        // Update is called once per frame
+        private void Update()
             {
                 RotateView();
                 // the jump state needs to read here to make sure it is not missed
@@ -85,12 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Time.timeScale = 0;
-                SceneManager.LoadScene(1);
-
-            }
+           
             }
 
 
@@ -141,10 +139,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 UpdateCameraPosition(speed);
 
                 m_MouseLook.UpdateCursorLock();
-            }
+
+             }
+
+        
 
 
-            private void PlayJumpSound()
+        private void PlayJumpSound()
             {
                 m_AudioSource.clip = m_JumpSound;
                 m_AudioSource.Play();

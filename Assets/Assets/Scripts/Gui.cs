@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Gui : MonoBehaviour {
 
@@ -12,18 +13,26 @@ public class Gui : MonoBehaviour {
     private void Start()
     {
         timer = GetComponent<Text>();
+        SURVIVE_FOR = 20;
     }
 
     void Update()
     {
         timerValue += Time.deltaTime;
-        timer.text = "Survive: " + Mathf.RoundToInt(timerValue);
+        timer.text = "Time:  " + Mathf.RoundToInt(timerValue);
 
         if (Mathf.RoundToInt(timerValue) == SURVIVE_FOR)
         {
             timer.text = "You have won!";
-            Debug.Log("Victory");
             Time.timeScale = 0.0f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("ESC pressed");
+            Cursor.visible = true;
+            Time.timeScale = 0.0f;
+            SceneManager.LoadScene(0);
         }
     }
 }
